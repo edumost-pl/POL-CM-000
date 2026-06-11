@@ -33,7 +33,7 @@ const lesson = {
       text: `
             Nagle usłyszałam głośną kłótnię.
             Słowa ze zdania:
-            „Mały kot goni mysz.”
+            „Mały kot goni mysz”
             zaczęły się spierać.
             Każde twierdziło, że jest najważniejsze.
             `,
@@ -145,7 +145,7 @@ const lesson = {
             Inne opisują.
             Jeszcze inne mówią,
             co ktoś robi.
-            Tak powstały części mowy.
+            Dlatego słowa dzielimy na części mowy.
             `,
     },
     //  map - slide 9

@@ -174,7 +174,7 @@ function renderStory(slide) {
 
       if (isHidden) {
         uaBox.innerHTML = `
-            <strong>🇺🇦 Zrozumieć po ukraińskuю</strong>
+            <strong>🇺🇦 Zrozumieć po ukraińsku</strong>
             <br><br>
             ${slide.uaMeaning}
         `;
