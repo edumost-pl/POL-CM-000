@@ -1,0 +1,189 @@
+1. Powitanie
+2. Kłótnia słów
+3. Jak myślisz?
+4. Śledztwo Sowy
+5. Każde słowo jest ważne
+6. Grupowanie słów
+7. Wielkie odkrycie
+8. Mapa wysp
+9. Odmienne części mowy
+10. Nieodmienne części mowy
+11. Początek podróży
+12. Podsumowanie
+
+----------------------------
+
+POL-CM-001 Wyspa Rzeczowników
+
+Лучше сделать фирменную систему. иконков для MAPA WYSP где перечень наших островов
+
+Например создать папку:
+
+assets/icons/
+
+и там:
+
+island_intro.svg
+island_noun.svg
+island_verb.svg
+island_adj.svg
+island_num.svg
+island_pronoun.svg
+Я бы для EduMost в итоге сделал собственные SVG-иконки островов:
+
+📚 Intro / Spotkań Słów
+🏷️ Rzeczownik
+⚡ Czasownik
+🎨 Przymiotnik
+🔢 Liczebnik
+👤 Zaimek
+
+Иконки раздела Części Mowy
+
+1. Spotkań Słów
+Вводный остров.
+Иконка: 📚
+Смысл: "Место, где встречаются слова"
+Файл: pol_icon_intro.svg
+
+2. Rzeczownik
+
+Мне очень нравится бирка.
+🏷️
+Потому что rzeczownik что-то называет.
+Файл: pol_icon_rzeczownik.svg
+
+3. Czasownik ⚡
+Действие.
+Движение.
+Энергия.
+Файл:
+pol_icon_czasownik.svg
+
+4. Przymiotnik
+🎨
+Описывает мир.
+Добавляет цвет.
+Файл: pol_icon_przymiotnik.svg
+
+5. Liczebnik
+🔢
+Идеально понятно.
+Файл: pol_icon_liczebnik.svg
+
+6. Zaimek
+👤
+Замещает osoby i rzeczy.
+Файл: pol_icon_zaimek.svg
+
+7. Przysłówek
+🧭
+Показывает как происходит действие.
+Файл: pol_icon_przyslowek.svg
+
+8. Przyimek
+🔗
+Соединяет отношения между словами.
+Файл: pol_icon_przyimek.svg
+
+9. Spójnik
+🤝
+Соединяет слова и предложения.
+Файл: pol_icon_spojnik.svg
+
+10. Wykrzyknik
+💥
+Эмоции.
+Файл: pol_icon_wykrzyknik.svg
+
+----------------------------------
+Я бы сейчас довёл до конца именно архитектуру:
+
+✅ фирменные иконки утверждаем
+
+✅ карта островов генерируется через JS
+
+✅ украинская поддержка работает
+
+✅ медленная печать совы
+
+✅ клик по облачку показывает весь текст сразу
+
+--------------------------
+
+Вообще я вижу такую схему для POL-CM-000:
+
+Слайд 1
+🏝️ Witaj w Krainie Języka Polskiego
+Карта островов + сова.
+
+Слайд 2
+😲 Kłótnia słów
+Слова спорят.
+
+Слайд 3
+❓ Jak myślisz?
+Картинка с тремя указателями:
+Tak
+Nie
+Nie wiem
+
+Слайд 4
+🔍 Śledztwo Sowy
+Сова с лупой.
+
+Слайд 5
+🕵️ Sprawdźmy
+Два предложения рядом.
+Одно нормальное.
+Одно без слова "kot".
+
+Слайд 6
+💡 Wielkie odkrycie
+Слова собирают предложение как пазл.
+
+Слайд 7
+📚 Grupowanie słów
+Коробки:
+Nazywają
+Opisują
+Mówią co robi
+
+Слайд 8
+🏝️ Wielkie odkrycie
+Появляется термин:
+CZĘŚCI MOWY
+и группы слов расходятся по островам.
+
+Слайд 9
+🗺️ Mapa Wysp
+Вот тут уже большая красивая карта архипелага.
+Все острова с нашими фирменными иконками.
+
+Слайд 10
+🏰 Odmienne części mowy
+Остров-трансформер.
+Слова меняют форму.
+
+Слайд 11
+🏝️ Nieodmienne części mowy
+Остров с каменными табличками.
+Форма не меняется.
+
+Слайд 12
+🏆 Podsumowanie
+Инфографика:
+CZĘŚCI MOWY
+🏷️ rzeczownik
+⚡ czasownik
+🎨 przymiotnik
+🔢 liczebnik
+👤 zaimek
+🧭 przysłówek
+🔗 przyimek
+🤝 spójnik
+💥 wykrzyknik
+
+
+
+info-template, summary-template

@@ -1,0 +1,598 @@
+/* ===================================
+   RESET
+=================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Nunito',sans-serif;
+    background:#EAF4FF;
+    color:#333;
+    line-height:1.6;
+    min-height:100vh;
+}
+
+button{
+    margin: 0.5% auto;
+}
+
+/* ===================================
+   ZOOM IMAGE
+=================================== */
+
+.zum{
+    cursor:pointer;
+}
+
+.zoom-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.9);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    z-index:9999;
+}
+
+.zoom-modal.hidden{
+    display:none;
+}
+
+.zoom-modal img{
+    max-width:95%;
+    max-height:95vh;
+    border-radius:16px;
+    object-fit:contain;
+}
+
+.zoom-close{
+    position:absolute;
+    top:20px;
+    right:20px;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:white;
+    font-size:24px;
+    cursor:pointer;
+}
+
+/* ===================================
+   CONTAINER
+=================================== */
+
+.lesson-container{
+    width:100%;
+    max-width:700px;
+    margin:0 auto;
+    padding:16px;
+    padding-bottom:120px;
+}
+
+/* ===================================
+   HEADER
+=================================== */
+
+.lesson-header{
+    margin-bottom:20px;
+}
+
+.lesson-title{
+    font-size:1.5rem;
+    font-weight:700;
+    color:#8E44AD;
+    margin-bottom:12px;
+}
+
+/* ===================================
+   PROGRESS
+=================================== */
+
+.progress-wrapper{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.progress-bar{
+    flex:1;
+    height:12px;
+    background:#ddd;
+    border-radius:999px;
+    overflow:hidden;
+}
+
+#progress-fill{
+    width:0%;
+    height:100%;
+    background:#8E44AD;
+    transition:.4s;
+}
+
+#slide-counter{
+    font-size:.9rem;
+    font-weight:700;
+    color:#555;
+}
+
+/* ===================================
+   MAPA
+=================================== */
+
+.world-map{
+    display:flex;
+    gap:14px;
+    overflow-x:auto;
+    margin-bottom:24px;
+    padding-bottom:12px;
+    scrollbar-width:none;
+}
+
+.world-map::-webkit-scrollbar{
+    display:none;
+}
+
+.world-map::-webkit-scrollbar-thumb{
+    background:#C39BD3;
+    border-radius:999px;
+}
+
+.island{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-shrink:0;
+    min-width:max-content;
+    padding:14px 22px;
+    border-radius:999px;
+    font-size:1rem;
+    font-weight:700;
+     white-space:nowrap;
+    cursor: pointer;
+}
+.island:hover{
+    transform: scale(0.9);
+}
+.island img{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    flex-shrink:0;
+}
+.unlocked{
+    background:#8E44AD;
+    color:white;
+    box-shadow:
+        0 6px 18px rgba(142,68,173,.25);
+    
+}
+
+.locked{
+    background:white;
+    border:2px solid #C39BD3;
+    color:#8E44AD;
+}
+
+/* ===================================
+   SLIDES
+=================================== */
+
+.slide{
+    animation:fadeIn .4s ease;
+}
+
+
+/*  */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ===================================
+   PLACEHOLDER
+=================================== */
+
+.image-placeholder{
+    height:auto;
+    background:white;
+    border:3px dashed #C39BD3;
+
+    border-radius:24px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    color:#8E44AD;
+
+    margin-bottom:20px;
+}
+
+.image-placeholder span{
+    margin-top:10px;
+    font-weight:700;
+}
+/* images na slide */
+.slide-image{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:24px;
+    display:block;
+}
+
+/* ===================================
+   TITLES
+=================================== */
+
+.slide-title{
+    color:#8E44AD;
+    font-size:1.6rem;
+    margin-bottom:16px;
+}
+
+/* ===================================
+   SOWA
+=================================== */
+
+.speech-box{
+    background:white;
+
+    border-left:6px solid #8E44AD;
+
+    border-radius:18px;
+
+    padding:18px;
+}
+
+.speaker{
+    font-weight:700;
+    color:#8E44AD;
+    margin-bottom:10px;
+}
+
+.slide-text{
+    min-height:90px;
+    font-size: 1.2rem;
+}
+
+/* ===================================
+   QUIZ
+=================================== */
+
+.question{
+    font-size:1.1rem;
+    margin-bottom:20px;
+}
+
+.answers{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.answer-btn{
+
+    width:100%;
+
+    min-height:56px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:white;
+
+    border:2px solid #C39BD3;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    padding:12px;
+
+    transition:.25s;
+}
+
+.answer-btn:hover{
+    transform:translateY(-2px);
+}
+
+.answer-btn.correct{
+    background:#D4EFDF;
+    border-color:#27AE60;
+}
+
+.answer-btn.wrong{
+    background:#FADBD8;
+    border-color:#E74C3C;
+}
+
+/* ===================================
+   INFO
+=================================== */
+
+.info-content{
+    background:white;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    border:2px solid #C39BD3;
+}
+
+/* ===================================
+   SUMMARY
+=================================== */
+
+.summary-content{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:14px;
+}
+
+.summary-item{
+
+    background:white;
+
+    padding:16px;
+
+    border-radius:18px;
+
+    border-left:6px solid #8E44AD;
+}
+
+/* ===================================
+   VOCABULARY
+=================================== */
+
+.word-card{
+
+    background:white;
+
+    border:2px solid #C39BD3;
+
+    border-radius:18px;
+
+    padding:16px;
+
+    margin-bottom:12px;
+}
+
+.word-pl{
+    color:#8E44AD;
+    font-size:1.1rem;
+    font-weight:700;
+}
+
+.word-ua{
+    color:#555;
+    margin-top:6px;
+}
+
+/* ===================================
+   HELP BUTTON
+=================================== */
+
+.help-btn{
+
+    position:fixed;
+
+    bottom:90px;
+
+    right:20px;
+
+    width:60px;
+
+    height:60px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#8E44AD;
+
+    color:white;
+
+    font-size:1.4rem;
+
+    cursor:pointer;
+
+    box-shadow:0 6px 20px rgba(0,0,0,.15);
+
+    z-index:100;
+}
+
+/* ===================================
+   MODAL
+=================================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.5);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    z-index:1000;
+}
+
+.hidden{
+    display:none;
+}
+
+.modal-content{
+
+    width:100%;
+
+    max-width:400px;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:24px;
+
+    text-align:center;
+}
+
+.modal-content h3{
+    color:#8E44AD;
+    margin-bottom:12px;
+}
+
+.modal-content button{
+
+    margin-top:16px;
+
+    width:100%;
+
+    min-height:50px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#8E44AD;
+
+    color:white;
+
+    cursor:pointer;
+}
+
+/* ===================================
+   FOOTER
+=================================== */
+
+.lesson-footer{
+
+    position:fixed;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    background:white;
+
+    padding:12px;
+
+    display:flex;
+
+    gap:12px;
+
+    box-shadow:0 -3px 15px rgba(0,0,0,.08);
+}
+
+.nav-btn{
+
+    flex:1;
+
+    min-height:56px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#7B3C98;
+
+    color:white;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.nav-btn:disabled{
+
+    opacity:.4;
+
+    cursor:not-allowed;
+}
+
+/* UA */
+.ua-btn{
+
+    margin-top:15px;
+
+    background:#FFD54F;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:10px 14px;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.ua-box{
+
+    margin-top:15px;
+
+    background:#FFF8E1;
+
+    border-left:5px solid #FFD54F;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    line-height:1.5;
+}
+
+/* ===================================
+   MOBILE
+=================================== */
+
+@media(max-width:480px){
+
+    .lesson-title{
+        font-size:1.25rem;
+    }
+
+    .slide-title{
+        font-size:1.35rem;
+    }
+
+    .image-placeholder{
+        height:220px;
+    }
+
+}

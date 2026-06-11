@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduMost | Kraina Części Mowy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<div id="zoom-modal" class="zoom-modal hidden">
+    <button id="zoom-close" class="zoom-close">
+        ✕
+    </button>
+    <img id="zoom-image" src="" alt="">
+</div>
+
+<body>
+
+    <div class="lesson-container">
+
+        <!-- =========================
+             HEADER
+        ========================== -->
+
+        <header class="lesson-header">
+            <div class="lesson-title">
+                🏝️ Kraina Części Mowy
+            </div>
+            <div class="progress-wrapper">
+                <div class="progress-bar">
+                    <div id="progress-fill"></div>
+                </div>
+                <div id="slide-counter">
+                    1 / 12
+                </div>
+            </div>
+
+        </header>
+
+        <!-- =========================
+             MAPA WYSP
+        ========================== -->
+
+        <section class="world-map">
+
+            <div class="island unlocked">
+                <img src="assets/icons/pol_icon_intro.svg" alt="">
+                <span>Spotkań Słów</span>
+            </div>
+
+            <div class="island locked">
+                <img src="assets/icons/pol_icon_rzeczownik.svg" alt="">
+                <span>Rzeczowniki</span>
+            </div>
+
+            <div class="island locked">
+                <img src="assets/icons/pol_icon_czasownik.svg" alt="">
+                <span>Czasowniki</span>
+            </div>
+
+            <div class="island locked">
+                <img src="assets/icons/pol_icon_przymiotnik.svg" alt="">
+                <span>Przymiotniki</span>
+            </div>
+
+            <div class="island locked">
+                <img src="assets/icons/pol_icon_liczebnik.svg" alt="">
+                <span>Liczebniki</span>
+            </div>
+
+            <div class="island locked">
+                <img src="assets/icons/pol_icon_zaimek.svg" alt="">
+                <span>Zaimki</span>
+            </div>
+            <div class="island locked">
+                <img src="assets/icons/pol_icon_przyslowek.svg" alt="">
+                <span>Przysłówek</span>
+            </div>
+            <div class="island locked">
+                <img src="assets/icons/pol_icon_przyimek.svg" alt="">
+                <span>Przyimek</span>
+            </div>
+            <div class="island locked">
+                <img src="assets/icons/pol_icon_spojnik.svg" alt="">
+                <span>Spójnik</span>
+            </div>
+            <div class="island locked">
+                <img src="assets/icons/pol_icon_wykrzyknik.svg" alt="">
+                <span>Wykrzyknik</span>
+            </div>
+
+        </section>
+
+        <!-- =========================
+             GŁÓWNY SLAJD
+        ========================== -->
+
+        <main id="slide-container">
+
+            <!-- JS renderuje tutaj slajdy -->
+
+        </main>
+
+        <!-- =========================
+             POMOC
+        ========================== -->
+
+        <button id="help-btn" class="help-btn">
+            ❓
+        </button>
+
+        <!-- =========================
+             OKNO POMOCY
+        ========================== -->
+
+        <div id="help-modal" class="modal hidden">
+            <div class="modal-content">
+                <h3>💡 Podpowiedź</h3>
+                <p id="help-text">
+                    Tutaj pojawi się wskazówka.
+                </p>
+                <button id="close-help">
+                    Zamknij
+                </button>
+            </div>
+        </div>
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+
+        <footer class="lesson-footer">
+
+            <button id="prev-btn" class="nav-btn">
+                ← Wstecz
+            </button>
+
+            <button id="next-btn" class="nav-btn">
+                Dalej →
+            </button>
+
+        </footer>
+
+    </div>
+
+    <!-- =========================
+         TEMPLATE: STORY
+    ========================== -->
+
+    <template id="story-template">
+        <div class="slide story-slide">
+            <div class="image-placeholder">
+                🖼️  <span>MIEJSCE NA ILUSTRACJĘ</span>
+            </div>
+            <!--  -->
+            <h2 class="slide-title"></h2>
+            <div class="speech-box">
+                <div class="speaker">
+                    🦉 Sowa EduMost
+                </div>
+                <p class="slide-text"></p>
+                <button id="ua-btn" class="ua-btn">
+                    🇺🇦 Zrozumieć po ukraińsku
+                </button>
+                <div class="ua-box hidden"></div>
+            </div>
+        </div>
+    </template>
+
+    <!-- =========================
+         TEMPLATE: QUIZ
+    ========================== -->
+
+    <template id="quiz-template">
+
+        <div class="slide quiz-slide">
+
+            <h2 class="slide-title"></h2>
+
+            <p class="question"></p>
+
+            <div class="answers"></div>
+
+        </div>
+
+    </template>
+
+    <!-- =========================
+         TEMPLATE: INFO
+    ========================== -->
+
+    <template id="info-template">
+        <div class="slide info-slide">
+            <div class="image-placeholder"></div>
+
+            <h2 class="slide-title"></h2>
+
+            <div class="info-content"></div>
+
+        </div>
+
+    </template>
+
+    <!-- =========================
+         TEMPLATE: MAP
+    ========================== -->
+
+    <template id="map-template">
+
+        <div class="slide map-slide">
+
+            <div class="image-placeholder"></div>
+
+            <h2 class="slide-title"></h2>
+
+            <p class="slide-text"></p>
+
+        </div>
+
+    </template>
+
+    <!-- =========================
+         TEMPLATE: SUMMARY
+    ========================== -->
+
+    <template id="summary-template">
+
+        <div class="slide summary-slide">
+             <div class="image-placeholder"></div>
+            <h2 class="slide-title"></h2>
+
+            <div class="summary-content"></div>
+
+        </div>
+
+    </template>
+
+    <script src="lessonData.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
