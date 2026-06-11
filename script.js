@@ -19,7 +19,7 @@ const closeHelp = document.getElementById("close-help");
 
 const zoomModal = document.getElementById("zoom-modal");
 const zoomImage = document.getElementById("zoom-image");
-const zoomClose =  document.getElementById("zoom-close");
+const zoomClose = document.getElementById("zoom-close");
 
 // ===================================
 // INIT
@@ -114,6 +114,9 @@ function renderSlide() {
     case "summary":
       renderSummary(slide);
       break;
+    case "finish":
+      renderFinish(slide);
+      break;
 
     default:
       slideContainer.innerHTML = "<p>Nieznany typ slajdu.</p>";
@@ -203,29 +206,21 @@ function renderQuiz(slide) {
   clone.querySelector(".question").textContent = slide.question;
 
   if (slide.uaMeaning) {
+    const question = clone.querySelector(".question");
 
-    const question =
-        clone.querySelector(".question");
-
-    const button =
-        document.createElement("button");
+    const button = document.createElement("button");
 
     button.className = "ua-btn";
 
-    button.textContent =
-        "🇺🇦 Zrozumieć po ukraińsku";
+    button.textContent = "🇺🇦 Zrozumieć po ukraińsku";
 
-    const box =
-        document.createElement("div");
+    const box = document.createElement("div");
 
-    box.className =
-        "ua-box hidden";
+    box.className = "ua-box hidden";
 
     button.addEventListener("click", () => {
-
-        if(box.classList.contains("hidden")){
-
-            box.innerHTML = `
+      if (box.classList.contains("hidden")) {
+        box.innerHTML = `
                 <strong>
                 🇺🇦 Пояснення українською
                 </strong>
@@ -233,25 +228,19 @@ function renderQuiz(slide) {
                 ${slide.uaMeaning}
             `;
 
-            box.classList.remove("hidden");
+        box.classList.remove("hidden");
 
-            button.textContent =
-                "🇺🇦 Schowaj wyjaśnienie";
+        button.textContent = "🇺🇦 Schowaj wyjaśnienie";
+      } else {
+        box.classList.add("hidden");
 
-        }else{
-
-            box.classList.add("hidden");
-
-            button.textContent =
-                "🇺🇦 Zrozumieć po ukraińsku";
-
-        }
-
+        button.textContent = "🇺🇦 Zrozumieć po ukraińsku";
+      }
     });
 
     question.after(button);
     button.after(box);
-}
+  }
   const answersContainer = clone.querySelector(".answers");
 
   slide.answers.forEach((answer, index) => {
@@ -289,66 +278,50 @@ function renderQuiz(slide) {
 // ===================================
 
 function renderInfo(slide) {
+  const template = document.getElementById("info-template");
 
-    const template =
-        document.getElementById("info-template");
+  const clone = template.content.cloneNode(true);
 
-    const clone =
-        template.content.cloneNode(true);
+  const imageContainer = clone.querySelector(".image-placeholder");
 
-    const imageContainer =
-        clone.querySelector(".image-placeholder");
+  // ==========================
+  // IMAGE
+  // ==========================
 
-    // ==========================
-    // IMAGE
-    // ==========================
-
-    if (slide.image) {
-
-        imageContainer.innerHTML = `
+  if (slide.image) {
+    imageContainer.innerHTML = `
             <img
                 src="${slide.image}"
                 alt="${slide.title}"
                 class="slide-image zum"
             >
         `;
-    }
+  }
 
-    clone.querySelector(".slide-title")
-        .textContent = slide.title;
+  clone.querySelector(".slide-title").textContent = slide.title;
 
-    const content =
-        clone.querySelector(".info-content");
+  const content = clone.querySelector(".info-content");
 
-    content.innerHTML = slide.content
-        .trim()
-        .replace(/\n/g, "<br>");
+  content.innerHTML = slide.content.trim().replace(/\n/g, "<br>");
 
-    // ==========================
-    // UKRAINIAN HELP
-    // ==========================
+  // ==========================
+  // UKRAINIAN HELP
+  // ==========================
 
-    if (slide.uaMeaning) {
+  if (slide.uaMeaning) {
+    const button = document.createElement("button");
 
-        const button =
-            document.createElement("button");
+    button.className = "ua-btn";
 
-        button.className = "ua-btn";
+    button.textContent = "🇺🇦 Zrozumieć po ukraińsku";
 
-        button.textContent =
-            "🇺🇦 Zrozumieć po ukraińsku";
+    const box = document.createElement("div");
 
-        const box =
-            document.createElement("div");
+    box.className = "ua-box hidden";
 
-        box.className =
-            "ua-box hidden";
-
-        button.addEventListener("click", () => {
-
-            if (box.classList.contains("hidden")) {
-
-                box.innerHTML = `
+    button.addEventListener("click", () => {
+      if (box.classList.contains("hidden")) {
+        box.innerHTML = `
                     <strong>
                         🇺🇦 Пояснення українською
                     </strong>
@@ -356,27 +329,23 @@ function renderInfo(slide) {
                     ${slide.uaMeaning}
                 `;
 
-                box.classList.remove("hidden");
+        box.classList.remove("hidden");
 
-                button.textContent =
-                    "🇺🇦 Schowaj wyjaśnienie";
+        button.textContent = "🇺🇦 Schowaj wyjaśnienie";
+      } else {
+        box.classList.add("hidden");
 
-            } else {
+        button.textContent = "🇺🇦 Zrozumieć po ukraińsku";
+      }
+    });
 
-                box.classList.add("hidden");
+    content.after(button);
+    button.after(box);
+  }
 
-                button.textContent =
-                    "🇺🇦 Zrozumieć po ukraińsku";
-            }
-        });
+  slideContainer.appendChild(clone);
 
-        content.after(button);
-        button.after(box);
-    }
-
-    slideContainer.appendChild(clone);
-
-    initZoom();
+  initZoom();
 }
 
 // ===================================
@@ -384,63 +353,48 @@ function renderInfo(slide) {
 // ===================================
 
 function renderMap(slide) {
+  const template = document.getElementById("map-template");
 
-    const template =
-        document.getElementById("map-template");
+  const clone = template.content.cloneNode(true);
 
-    const clone =
-        template.content.cloneNode(true);
+  const imageContainer = clone.querySelector(".image-placeholder");
 
-    const imageContainer =
-        clone.querySelector(".image-placeholder");
-
-    if (slide.image) {
-
-        imageContainer.innerHTML = `
+  if (slide.image) {
+    imageContainer.innerHTML = `
             <img
                 src="${slide.image}"
                 alt="${slide.title}"
                 class="slide-image zum"
             >
         `;
-    }
+  }
 
-    clone.querySelector(".slide-title")
-        .textContent = slide.title;
+  clone.querySelector(".slide-title").textContent = slide.title;
 
-    clone.querySelector(".slide-text")
-        .innerHTML = slide.text
-            .trim()
-            .replace(/\n/g, "<br>");
+  clone.querySelector(".slide-text").innerHTML = slide.text
+    .trim()
+    .replace(/\n/g, "<br>");
 
-    // ===================================
-    // UKRAINIAN HELP
-    // ===================================
+  // ===================================
+  // UKRAINIAN HELP
+  // ===================================
 
-    if (slide.uaMeaning) {
+  if (slide.uaMeaning) {
+    const text = clone.querySelector(".slide-text");
 
-        const text =
-            clone.querySelector(".slide-text");
+    const button = document.createElement("button");
 
-        const button =
-            document.createElement("button");
+    button.className = "ua-btn";
 
-        button.className = "ua-btn";
+    button.textContent = "🇺🇦 Zrozumieć po ukraińsku";
 
-        button.textContent =
-            "🇺🇦 Zrozumieć po ukraińsku";
+    const box = document.createElement("div");
 
-        const box =
-            document.createElement("div");
+    box.className = "ua-box hidden";
 
-        box.className =
-            "ua-box hidden";
-
-        button.addEventListener("click", () => {
-
-            if (box.classList.contains("hidden")) {
-
-                box.innerHTML = `
+    button.addEventListener("click", () => {
+      if (box.classList.contains("hidden")) {
+        box.innerHTML = `
                     <strong>
                         🇺🇦 Пояснення українською
                     </strong>
@@ -448,27 +402,23 @@ function renderMap(slide) {
                     ${slide.uaMeaning}
                 `;
 
-                box.classList.remove("hidden");
+        box.classList.remove("hidden");
 
-                button.textContent =
-                    "🇺🇦 Schowaj wyjaśnienie";
+        button.textContent = "🇺🇦 Schowaj wyjaśnienie";
+      } else {
+        box.classList.add("hidden");
 
-            } else {
+        button.textContent = "🇺🇦 Zrozumieć po ukraińsku";
+      }
+    });
 
-                box.classList.add("hidden");
+    text.after(button);
+    button.after(box);
+  }
 
-                button.textContent =
-                    "🇺🇦 Zrozumieć po ukraińsku";
-            }
-        });
+  slideContainer.appendChild(clone);
 
-        text.after(button);
-        button.after(box);
-    }
-
-    slideContainer.appendChild(clone);
-
-    initZoom();
+  initZoom();
 }
 
 // ===================================
@@ -476,19 +426,99 @@ function renderMap(slide) {
 // ===================================
 
 function renderSummary(slide) {
+  const template = document.getElementById("summary-template");
+
+  const clone = template.content.cloneNode(true);
+
+  const imageContainer = clone.querySelector(".image-placeholder");
+  
+
+  // ==========================
+  // IMAGE
+  // ==========================
+
+  if (slide.image) {
+    imageContainer.innerHTML = `
+            <img
+                src="${slide.image}"
+                alt="${slide.title}"
+                class="slide-image zum"
+            >
+        `;
+  }
+
+  clone.querySelector(".slide-title").textContent = slide.title;
+
+  const container = clone.querySelector(".summary-content");
+
+  slide.items.forEach((item) => {
+    const block = document.createElement("div");
+
+    block.className = "summary-item";
+
+    block.textContent = item;
+
+    container.appendChild(block);
+  });
+
+  // ==========================
+  // UKRAINIAN HELP
+  // ==========================
+
+  if (slide.uaMeaning) {
+    const button = document.createElement("button");
+
+    button.className = "ua-btn";
+
+    button.textContent = "🇺🇦 Zrozumieć po ukraińsku";
+
+    const box = document.createElement("div");
+
+    box.className = "ua-box hidden";
+
+    button.addEventListener("click", () => {
+      if (box.classList.contains("hidden")) {
+        box.innerHTML = `
+                    <strong>
+                        🇺🇦 Пояснення українською
+                    </strong>
+                    <br><br>
+                    ${slide.uaMeaning}
+                `;
+
+        box.classList.remove("hidden");
+
+        button.textContent = "🇺🇦 Schowaj wyjaśnienie";
+      } else {
+        box.classList.add("hidden");
+
+        button.textContent = "🇺🇦 Zrozumieć po ukraińsku";
+      }
+    });
+
+    container.after(button);
+    button.after(box);
+  }
+
+  slideContainer.appendChild(clone);
+
+  initZoom();
+}
+
+// ===================================
+// FINISH
+// ===================================
+
+function renderFinish(slide) {
 
     const template =
-        document.getElementById("summary-template");
+        document.getElementById("finish-template");
 
     const clone =
         template.content.cloneNode(true);
 
     const imageContainer =
         clone.querySelector(".image-placeholder");
-
-    // ==========================
-    // IMAGE
-    // ==========================
 
     if (slide.image) {
 
@@ -504,79 +534,17 @@ function renderSummary(slide) {
     clone.querySelector(".slide-title")
         .textContent = slide.title;
 
-    const container =
-        clone.querySelector(".summary-content");
-
-    slide.items.forEach((item) => {
-
-        const block =
-            document.createElement("div");
-
-        block.className =
-            "summary-item";
-
-        block.textContent =
-            item;
-
-        container.appendChild(block);
-
-    });
-
-    // ==========================
-    // UKRAINIAN HELP
-    // ==========================
-
-    if (slide.uaMeaning) {
-
-        const button =
-            document.createElement("button");
-
-        button.className =
-            "ua-btn";
-
-        button.textContent =
-            "🇺🇦 Zrozumieć po ukraińsku";
-
-        const box =
-            document.createElement("div");
-
-        box.className =
-            "ua-box hidden";
-
-        button.addEventListener("click", () => {
-
-            if (box.classList.contains("hidden")) {
-
-                box.innerHTML = `
-                    <strong>
-                        🇺🇦 Пояснення українською
-                    </strong>
-                    <br><br>
-                    ${slide.uaMeaning}
-                `;
-
-                box.classList.remove("hidden");
-
-                button.textContent =
-                    "🇺🇦 Schowaj wyjaśnienie";
-
-            } else {
-
-                box.classList.add("hidden");
-
-                button.textContent =
-                    "🇺🇦 Zrozumieć po ukraińsku";
-
-            }
-        });
-
-        container.after(button);
-        button.after(box);
-    }
+    clone.querySelector(".finish-message")
+        .innerHTML = slide.message
+            .trim()
+            .replace(/\n/g,"<br>");
 
     slideContainer.appendChild(clone);
 
     initZoom();
+
+    launchConfetti();
+
 }
 
 // ===================================
@@ -596,40 +564,36 @@ function typeWriter(text, element) {
     if (i >= text.length) {
       clearInterval(timer);
     }
-  }, 85);
+  }, 60);
 }
 
-function initZoom(){
+function initZoom() {
+  const images = document.querySelectorAll(".zum");
 
-    const images =
-        document.querySelectorAll(".zum");
+  images.forEach((image) => {
+    image.addEventListener("click", () => {
+      zoomImage.src = image.src;
 
-    images.forEach(image => {
-
-        image.addEventListener("click", () => {
-
-            zoomImage.src = image.src;
-
-            zoomModal.classList.remove("hidden");
-
-        });
-
+      zoomModal.classList.remove("hidden");
     });
-
+  });
 }
 
 zoomClose.addEventListener("click", () => {
-
-    zoomModal.classList.add("hidden");
-
+  zoomModal.classList.add("hidden");
 });
 
 zoomModal.addEventListener("click", (e) => {
-
-    if(e.target === zoomModal){
-
-        zoomModal.classList.add("hidden");
-
-    }
-
+  if (e.target === zoomModal) {
+    zoomModal.classList.add("hidden");
+  }
 });
+
+// конец
+function launchConfetti() {
+  confetti({
+    particleCount: 150,
+    spread: 120,
+    origin: { y: 0.6 },
+  });
+}

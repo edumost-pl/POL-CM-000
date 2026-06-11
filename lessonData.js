@@ -223,5 +223,28 @@ const lesson = {
         "Wkrótce odwiedzimy Wyspę Rzeczowników 🐱",
       ],
     },
+    //  finish - slide 13
+    {
+    type: "finish",
+
+    title: "🎉 Gratulacje!",
+
+    image: "assets/images/finish.png",
+
+    uaMeaning: `
+    Вітаємо!
+
+    Ти завершив свою першу подорож
+    Країною Частин Мови.
+    `,
+
+    message: `
+    Ukończyłeś lekcję
+    Kraina Części Mowy.
+
+    Teraz wiesz,
+    czym są części mowy.
+    `
+}
   ],
 };
