@@ -78,11 +78,23 @@ function updateProgress() {
 
   prevBtn.disabled = currentSlide === 0;
 
-  if (currentSlide === lesson.slides.length - 1) {
+  if (currentSlide === lesson.slides.length - 2) {
+
     nextBtn.textContent = "🏆 Koniec";
-  } else {
+    nextBtn.style.display = "block";
+
+}
+else if (currentSlide === lesson.slides.length - 1) {
+
+    nextBtn.style.display = "none";
+
+}
+else {
+
     nextBtn.textContent = "Dalej →";
-  }
+    nextBtn.style.display = "block";
+
+}
 }
 
 // ===================================
@@ -564,7 +576,7 @@ function typeWriter(text, element) {
     if (i >= text.length) {
       clearInterval(timer);
     }
-  }, 60);
+  }, 50);
 }
 
 function initZoom() {
